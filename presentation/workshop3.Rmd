@@ -1,0 +1,180 @@
+---
+title: "MFRE Data Analytics Workshop Series"
+subtitle: "Workshop 3: Python I"
+author: "Krisha Lim"
+date: "University of British Columbia | Master of Food and Resource Economics November 8, 2021" #"`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, "scrollable.css"] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+  pdf_document:
+    dev: cairo_pdf
+---
+
+```{css, echo=FALSE}
+# CSS for including pauses in printed PDF output (see bottom of lecture)
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+
+.remark-slide-scaler {
+    overflow-y: auto;
+}
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center",  
+  fig.height=4, #fig.width=6,
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=T#, echo=F, warning=F, message=F
+  )
+
+pacman::p_load(reticulate, tidyverse, dplyr)
+# reticulate::install_miniconda()
+```
+
+
+# Workshop preparation
+
+☑ To Add
+
+---
+
+# Overview
+
+Python I
+
+Python II
+
+
+---
+
+# Hat tip
+
+Add info 
+
+---
+class: inverse, center, middle
+name: motivation
+
+# Motivation
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+
+# Why Python?
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("pics/tweet_nick.png")
+```
+
+---
+
+# Learning Outcomes
+
+- To add
+
+---
+class: inverse, center, middle
+name: get_started
+
+# Python I
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+# Why Python?
+
+- Free
+- Open-source
+- Has a large community
+- Rich ecosystem of third-party packages
+- Widely used in industry and academia
+
+---
+# Google Colab
+
+For this workshop and the Analytics course next semester, we will use [Google Colab](https://colab.research.google.com/). All you need is a working Gmail account.  
+
+  - No need to install any software 
+  - Works on Windows and MacOS
+  - Can easily share with colleagues
+
+Keyboard shortcuts
+  - `Ctrl + Enter` to run
+  - `Ctrl + M + B` to insert code chunk
+  
+---
+# Try it out
+
+```{python}
+2 + 2
+print("Hello World")
+
+```
+
+---
+# Strings, integers, and floats
+
+In Python, the assignment operator is `=`. To review the value of a variable, we can type the name of the variable into the interpreter and press Enter/Return. 
+
+```{python}
+text = "Data Carpentry"
+number = 42
+pi_value = 3.1415
+
+text
+```
+
+---
+# Strings, integers, and floats
+
+Everything in Python has a type. To get the type of something, we can pass it to the built-in function `type`
+
+  - **Strings** hold sequences of characters, which can be letters, numbers, punctuation, etc.
+  - **Integers** are positive or negaitve whole numbers with no decimal points
+  - **Floats** are real numbers and can be written with a decimal point
+
+```{python}
+type(text)
+```
+
+```{python}
+type(number)
+```
+
+```{python}
+type(pi_value)
+```
+
+
+```{python}
+print(text)
+print(number)
+print(pi_value)
+```
+---
+# References
+
+- [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/00-before-we-start/index.html) by Data Carpentry
+
+- 
+
+
+```{r convert, include = F}
+#library(xaringanBuilder)
+
+#build_pdf("C:/Users/krishlim/OneDrive - The University Of British Columbia/Desktop/mfre/workshop1/presentation/r-excel-with-answers.html")
+
+```
