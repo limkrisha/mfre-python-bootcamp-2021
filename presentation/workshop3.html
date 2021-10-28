@@ -8,7 +8,7 @@
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="scrollable.css" type="text/css" />
+    <link rel="stylesheet" href="libs/cols.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -29,10 +29,11 @@ class: center, middle, inverse, title-slide
     display: block !important;
   }
 }
+.large4 { font-size: 400% }
+.large2 { font-size: 200% }
+.small90 { font-size: 90% }
+.small75 { font-size: 75% }
 
-.remark-slide-scaler {
-    overflow-y: auto;
-}
 &lt;/style&gt;
 
 
@@ -198,7 +199,7 @@ type(pi_value)
 ---
 # Operators
 
-We can perform mathematical calculations in Python using the basic operators `+, -, /, *, %`
+We can perform mathematical calculations in Python using basic operators `+, -, /, *, %`
 
 
 ```python
@@ -276,7 +277,7 @@ True and False
 
 **Lists** are the most fundamental data structure in Python. It is used to hold an ordered sequence of elements.
 
-We build a list using square brackets.
+We build a list using **square brackets**.
 
 
 ```python
@@ -347,9 +348,7 @@ print("length of example2:", len(example2))
 ---
 # Lists
 
-Each element in a list can be accessed by an index. 
-
-**Note that Python indexes start with 0 instead of 1.**
+Each element in a list can be accessed by an index. **Note that Python indexes start with 0 instead of 1.**
 
 
 ```python
@@ -378,9 +377,7 @@ print("Japan's carbon emissions is", example2[3][1])
 ---
 # Lists
 
-We can also slice lists, or select multiple elements from a list. In general, where it starts is included, where it ends is excluded, i.e., `[start_index:end_index]`
-
-You can also print the index of a certain value in a list
+We can also slice lists, or select multiple elements from a list. In general, where it starts is included, where it ends is excluded, i.e., `[start_index:end_index]`. 
 
 
 ```python
@@ -408,6 +405,12 @@ print(example1[4:])
 ```
 ## ['china', 7.06, 'japan', 9.14]
 ```
+
+---
+# Lists
+
+To print the index of a certain value in a list, we can use the `.index` function
+
 
 ```python
 print("The index of 7.06 is", example1.index(7.06))
@@ -438,7 +441,7 @@ print(example1)
 ---
 # Lists
 
-If we want to replace Canada to South Korea
+If we want to replace the values in Canada's entries with South Korea's emissions:
 
 
 ```python
@@ -456,7 +459,7 @@ print(example1)
 ---
 # Lists
 
-If we want to add Canada back
+If we want to add Canada to the list again:
 
 
 ```python
@@ -466,8 +469,9 @@ print(example1_can)
 ```
 
 ```
-## ['south korea', 12.9, 15.3, 'usa', 16.6, 'china', 7.06, 'japan', 9.14, 'canada', 15.3]
+## ['south korea', 12.9, 'usa', 16.6, 'china', 7.06, 'japan', 9.14, 'canada', 15.3]
 ```
+
 ---
 # Lists
 
@@ -475,7 +479,8 @@ We can delete elements using the `del` function. For example, we can delete Sout
 
 
 ```python
-example1_can_append = ["south korea", 12.9, "usa", 16.6, "china", 7.06, "japan", 9.14, "canada", 15.3]
+example1_can_append = ["south korea", 12.9, "usa", 16.6,
+                      "china", 7.06, "japan", 9.14, "canada", 15.3]
 
 del(example1_can_append[0:2])
 print(example1_can_append)
@@ -501,21 +506,281 @@ print(sum(carbon))
 ## 48.1
 ```
 
+# Lists
+
+We can use a `for` loop to access the elements in a list or other Python data structure one at a time:
+
+
+```python
+gdp = [44100, 55700, 16200, 39300]
+
+for i in gdp:
+  print(i)
+```
+
+```
+## 44100
+## 55700
+## 16200
+## 39300
+```
+
+---
+# Dictionaries
+
+Another important data type is called the **dictionary**. It is a container that holds pairs of objects - keys and values. 
+
+Let's say you want to track the carbon emissions of each of these four countries. 
+
+
+```python
+country = ['canada', 'usa', 'china', 'japan']
+carbon = [15.3, 16.6, 7.06, 9.14]
+
+usa_index = country.index('usa')
+print(usa_index)
+```
+
+```
+## 1
+```
+
+```python
+print('usa emissions: ', carbon[usa_index])
+```
+
+```
+## usa emissions:  16.6
+```
+
+---
+# Dictionaries
+
+This method, however, can be time consuming especially if you have a very big dictionary.
+
+Dictionaries allow us to connect each country directly to its emissions. 
+
+To create a dictionary, we use **curly brackets**. 
+
+Inside these curly brackets are a bunch of **key:value** pairs, where keys are countries and values are carbon emissions. 
+
+---
+# Dictionaries
+
+Dictionaries work a lot like lists, except that you index them with **keys** instead of an index number.
+
+To access a value of a given key, simply type in `data['key']`.
+
+
+```python
+emissions = {
+  'canada': 15.3, 
+  'usa':16.6,
+  'china':7.06,
+  'japan':9.14
+}
+
+emissions['china']
+```
+
+```
+## 7.06
+```
+
+---
+# Dictionaries
+
+For the lookup to work properly, keys in the dictionary must be unique. 
+
+In this example, the last key:value pair for China was stored in the dictionary. 
+
+
+```python
+emissions = {
+  'canada': 15.3, 
+  'usa':16.6,
+  'china':7.06,
+  'japan':9.14,
+  'china':15
+}
+
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 15, 'japan': 9.14}
+```
+
+---
+# Dictionaries
+
+To add an item to a dictionary, we assign a value to a new key.
+
+
+```python
+emissions['south korea'] = 12.9
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 15, 'japan': 9.14, 'south korea': 12.9}
+```
+
+We can also update the value of an existing key
+
+
+```python
+emissions['south korea'] = 15
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 15, 'japan': 9.14, 'south korea': 15}
+```
+
+We use the `del` function to delete a key:value pair.
+
+
+```python
+del(emissions['south korea'])
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 15, 'japan': 9.14}
+```
+---
+# Dictionaries
+
+Dictionaries can contain key:value pairs where the values are again dictionaries, just like lists can also contain lists. 
+
+In this example, the keys are still country names, but the values are GDP and carbon emissions.
+
+
+```python
+data = {
+  'canada': {'gdp':44100,
+            'carbon':15.3},
+  'usa': {'gdp':55700,
+          'carbon':16.6}
+}
+
+# To print Canada's emissions
+print(data['canada']['carbon'])
+```
+
+```
+## 15.3
+```
+
+---
+# Dictionaries
+
+To add China's GDP and emissions to the `data` dictionary we just created
+
+
+```python
+data = {
+  'canada': {'gdp':44100,
+            'carbon':15.3},
+  'usa': {'gdp':55700,
+          'carbon':16.6}
+}
+
+china_data = {'gdp':16200, 'carbon':7.06}
+
+#Add China to data
+data['china'] = china_data
+
+# Need to fix
+print(data)
+```
+
+```
+## {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
+```
+
+---
+# Dictionaries
+
+Using `for` loops with dictionaries is a little more complicated. 
+
+1) Method 1
+
+
+```python
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
+
+for key, value in data.items():
+  print(key, "-&gt;", value)
+```
+
+```
+## canada -&gt; {'gdp': 44100, 'carbon': 15.3}
+## usa -&gt; {'gdp': 55700, 'carbon': 16.6}
+## china -&gt; {'gdp': 16200, 'carbon': 7.06}
+```
+
+---
+# Dictionaries
+
+2) Method 2
+
+
+```python
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
+
+for key in data.keys():
+  print(key, "-&gt;", data[key])
+```
+
+```
+## canada -&gt; {'gdp': 44100, 'carbon': 15.3}
+## usa -&gt; {'gdp': 55700, 'carbon': 16.6}
+## china -&gt; {'gdp': 16200, 'carbon': 7.06}
+```
+
+---
+# Functions
+
+Defining a section of code as a *function* in Python is done using the `def` keyword. For example, a function that takes two arguments and returns their sum can be defined as:
+
+
+```python
+def add_function(a, b):
+  result = a + b
+  return result
+
+z = add_function(20, 22)
+print(z)
+```
+
+```
+## 42
+```
+
+
 ---
 # References
 
 - [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/00-before-we-start/index.html) by Data Carpentry
 
-- 
+
 
 
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/cols_macro.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
+"highlightSpans": false,
 "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
