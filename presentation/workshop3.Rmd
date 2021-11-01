@@ -507,7 +507,23 @@ for key in data.keys():
 ---
 # Functions
 
-Defining a section of code as a *function* in Python is done using the `def` keyword. For example, a function that takes two arguments and returns their sum can be defined as:
+A **function** is a code chunk that runs when is called. You can pass inputs called **parameters** or **arguments** into a function and get a result back. 
+
+Defining a section of code as a function in Python is done using the `def` keyword. 
+
+Arguments are specified after the function name, inside the parentheses. You can separate arguments using a comma. 
+
+In the example below, we have a function called `my_function` that takes one argument `fname`. When `my_function` is called, we pass along a first name, which is used inside the function to print the student name. 
+
+```{python}
+def my_function(fname):
+  print("Hello " + fname + ". Welcome to class today!")
+  
+my_function("Krisha")
+my_function("Janelle")
+```
+
+For example, a function that takes two arguments and returns their sum can be defined as:
 
 ```{python}
 def add_function(a, b):
@@ -518,7 +534,9 @@ z = add_function(20, 22)
 print(z)
 ```
 
-
+.footnote[
+[1] [W3 Schools Tutorial](https://www.w3schools.com/python/python_functions.asp) 
+]
 ---
 # References
 
