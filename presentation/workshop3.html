@@ -41,7 +41,11 @@ class: center, middle, inverse, title-slide
 
 # Workshop preparation
 
-☑ To Add
+☑ Make sure you have a Gmail account 
+
+☑ Can open the uploaded Google Colab notebook (.ipynb) file to fill in - sample [here](https://colab.research.google.com/drive/1PEPk-bhW0c9f2VizQ0Fp2OrvxQd_LLvp#scrollTo=qzo7pyYtr7LI)
+
+☑ Add any reading?
 
 ---
 
@@ -74,12 +78,6 @@ name: motivation
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=796px&gt;&lt;/html&gt;
 
 ---
-
-# Why Python?
-
-&lt;img src="pics/tweet_nick.png" width="70%" style="display: block; margin: auto;" /&gt;
-
----
 # Why Python?
 
 - Free
@@ -87,6 +85,40 @@ name: motivation
 - Has a large community
 - Rich ecosystem of third-party packages
 - Widely used in industry and academia
+
+---
+# Python and R
+
+.pull-left[
+**R**
+- Optimized for statistical analysis and data visualization
+- Rich libraries for data cleaning, creating visualizations, training and evaluating machine learning and deep learning algorithms
+- Strength of MFRE professors and team
+]
+
+.pull-right[
+**Python**
+- General-purpose, object oriented programming
+- Can more easily import SQL tables and other data from web
+- Well suited for machine learning at scale and integration with web applications
+
+]
+
+&gt;  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
+
+&gt; &lt;footer&gt;--- IBM&lt;/footer&gt;
+
+
+.footnote[
+[1] [IBM](https://www.ibm.com/cloud/blog/python-vs-r)
+]
+
+---
+
+# Why learn one more language? 
+
+&lt;img src="pics/tweet_nick.png" width="70%" style="display: block; margin: auto;" /&gt;
+
 
 ---
 class: inverse, center, middle
@@ -747,7 +779,63 @@ for key in data.keys():
 ---
 # Functions
 
-Defining a section of code as a *function* in Python is done using the `def` keyword. For example, a function that takes two arguments and returns their sum can be defined as:
+A **function** is a code chunk that runs when is called. You can pass inputs called **parameters** or **arguments** into a function and get a result back. 
+
+Defining a section of code as a function in Python is done using the `def` keyword. 
+
+---
+# Functions 
+
+In the example below, we have a function called `my_function` that takes one argument `fname`. When `my_function` is called, we pass along a first name, which is used inside the function to print the student name. 
+
+
+```python
+def my_function(fname):
+  print("Hello " + fname + ". Welcome to class today!")
+  
+my_function("Krisha")
+```
+
+```
+## Hello Krisha. Welcome to class today!
+```
+
+```python
+my_function("Janelle")
+```
+
+```
+## Hello Janelle. Welcome to class today!
+```
+
+---
+# Functions
+
+By default, a function must be called with the correct number of arguments. Meaning, if your function expects 2 arguments, you have to call the function with 2 arguments, not more and not less.
+
+
+```python
+def my_function(fname, lname):
+  print("Hello " + fname + " " + lname + "!")
+  
+my_function("Krisha", "Lim")
+```
+
+```
+## Hello Krisha Lim!
+```
+
+Try running this code. What do you get?
+
+
+```python
+my_function("Janelle")
+```
+
+---
+# Functions
+
+Here is an example of a function named `add_function` that takes two arguments and returns their sum:
 
 
 ```python
@@ -763,6 +851,23 @@ print(z)
 ## 42
 ```
 
+.footnote[
+[1] [W3 Schools Tutorial](https://www.w3schools.com/python/python_functions.asp) 
+]
+
+---
+# Exercises
+
+Kim has been asked to use Python to analyze the following dataset. 
+
+&lt;img src="pics/casestudy.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+Specifically, her tasks are:
+- Create one or more Python "dictionaries" for all data in the above table
+- Print fruit dictionary
+- Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
+- Calculate and print the rejection rate
+- Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
 ---
 # References

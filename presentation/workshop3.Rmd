@@ -48,7 +48,11 @@ reticulate::repl_python()
 
 # Workshop preparation
 
-☑ To Add
+☑ Make sure you have a Gmail account 
+
+☑ Can open the uploaded Google Colab notebook (.ipynb) file to fill in - sample [here](https://colab.research.google.com/drive/1PEPk-bhW0c9f2VizQ0Fp2OrvxQd_LLvp#scrollTo=qzo7pyYtr7LI)
+
+☑ Add any reading?
 
 ---
 
@@ -81,14 +85,6 @@ name: motivation
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
 ---
-
-# Why Python?
-
-```{r, echo = FALSE, out.width = "70%"}
-knitr::include_graphics("pics/tweet_nick.png")
-```
-
----
 # Why Python?
 
 - Free
@@ -96,6 +92,42 @@ knitr::include_graphics("pics/tweet_nick.png")
 - Has a large community
 - Rich ecosystem of third-party packages
 - Widely used in industry and academia
+
+---
+# Python and R
+
+.pull-left[
+**R**
+- Optimized for statistical analysis and data visualization
+- Rich libraries for data cleaning, creating visualizations, training and evaluating machine learning and deep learning algorithms
+- Strength of MFRE professors and team
+]
+
+.pull-right[
+**Python**
+- General-purpose, object oriented programming
+- Can more easily import SQL tables and other data from web
+- Well suited for machine learning at scale and integration with web applications
+
+]
+
+>  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
+
+> `r tufte::quote_footer('--- IBM')`
+
+
+.footnote[
+[1] [IBM](https://www.ibm.com/cloud/blog/python-vs-r)
+]
+
+---
+
+# Why learn one more language? 
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("pics/tweet_nick.png")
+```
+
 
 ---
 class: inverse, center, middle
@@ -511,7 +543,8 @@ A **function** is a code chunk that runs when is called. You can pass inputs cal
 
 Defining a section of code as a function in Python is done using the `def` keyword. 
 
-Arguments are specified after the function name, inside the parentheses. You can separate arguments using a comma. 
+---
+# Functions 
 
 In the example below, we have a function called `my_function` that takes one argument `fname`. When `my_function` is called, we pass along a first name, which is used inside the function to print the student name. 
 
@@ -523,7 +556,28 @@ my_function("Krisha")
 my_function("Janelle")
 ```
 
-For example, a function that takes two arguments and returns their sum can be defined as:
+---
+# Functions
+
+By default, a function must be called with the correct number of arguments. Meaning, if your function expects 2 arguments, you have to call the function with 2 arguments, not more and not less.
+
+```{python}
+def my_function(fname, lname):
+  print("Hello " + fname + " " + lname + "!")
+  
+my_function("Krisha", "Lim")
+```
+
+Try running this code. What do you get?
+
+```{python, eval = F}
+my_function("Janelle")
+```
+
+---
+# Functions
+
+Here is an example of a function named `add_function` that takes two arguments and returns their sum:
 
 ```{python}
 def add_function(a, b):
@@ -537,6 +591,23 @@ print(z)
 .footnote[
 [1] [W3 Schools Tutorial](https://www.w3schools.com/python/python_functions.asp) 
 ]
+
+---
+# Exercises
+
+Kim has been asked to use Python to analyze the following dataset. 
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("pics/casestudy.png")
+```
+
+Specifically, her tasks are:
+- Create one or more Python "dictionaries" for all data in the above table
+- Print fruit dictionary
+- Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
+- Calculate and print the rejection rate
+- Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
+
 ---
 # References
 
