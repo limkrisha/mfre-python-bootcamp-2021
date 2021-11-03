@@ -632,17 +632,18 @@ Specifically, her tasks are:
 - Calculate and print the rejection rate
 - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
----
-# Case Study - Suggested Solutions
 
-- Create fruit dictionary
+---
+  # Case Study - Suggested Solutions
+  
+  - Create fruit dictionary
 
 ```{python}
 fruit = {'oranges': {'quantity': [3000, 6000, 12000],
-                     'rejected': [1400, 3500, 6700]},
-         'bananas': {'quantity': [500, 3000, 15000],
-                     'rejected': [700, 1750, 3350]}}
-                     
+  'rejected': [1400, 3500, 6700]},
+  'bananas': {'quantity': [500, 3000, 15000],
+    'rejected': [700, 1750, 3350]}}
+
 ```
 
 - Print fruit dictionary
@@ -652,9 +653,9 @@ print(fruit)
 ```
 
 ---
-# Case Study - Suggested Solutions
-
-- Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
+  # Case Study - Suggested Solutions
+  
+  - Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
 
 ```{python}
 print("Quantity = ", sum(fruit['oranges']['quantity']))
@@ -662,9 +663,9 @@ print("Rejected = ", sum(fruit['oranges']['rejected']))
 ```
 
 ---
-# Case Study - Suggested Solutions
-
-- Calculate and print the rejection rate
+  # Case Study - Suggested Solutions
+  
+  - Calculate and print the rejection rate
 
 ```{python}
 orange_totalqty = sum(fruit['oranges']['quantity'])
@@ -676,16 +677,16 @@ print("Orange rejection rate = ", round(orange_rejrate, 2))
 ```
 
 ---
-# Case Study - Suggested Solutions
-
-- Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
+  # Case Study - Suggested Solutions
+  
+  - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
 ```{python}
 fruit = {'oranges': {'quantity': [3000, 6000, 12000],
-                     'rejected': [1400, 3500, 6700]},
-         'bananas': {'quantity': [500, 3000, 15000],
-                     'rejected': [700, 1750, 3350]}}
-                     
+  'rejected': [1400, 3500, 6700]},
+  'bananas': {'quantity': [500, 3000, 15000],
+    'rejected': [700, 1750, 3350]}}
+
 print("Orange max qty =", max(fruit['oranges']['quantity']))
 ```
 
