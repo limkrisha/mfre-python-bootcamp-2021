@@ -5,10 +5,9 @@ author: "Krisha Lim"
 date: "University of British Columbia | Master of Food and Resource Economics November 8, 2021" #"`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts, "libs/cols.css"] 
+    css: [default, metropolis, metropolis-fonts] 
     lib_dir: libs
     nature:
-      beforeInit: "libs/cols_macro.js"
       highlightStyle: github
       highlightLines: true
       highlightSpans: false
@@ -567,6 +566,10 @@ my_function("Krisha")
 my_function("Janelle")
 ```
 
+.footnote[
+[1] [W3 Schools Tutorial](https://www.w3schools.com/python/python_functions.asp) 
+]
+
 ---
 # Functions
 
@@ -584,6 +587,10 @@ Try running this code. What do you get?
 ```{python, eval = F}
 my_function("Janelle")
 ```
+
+.footnote[
+[1] [W3 Schools Tutorial](https://www.w3schools.com/python/python_functions.asp) 
+]
 
 ---
 # Functions
@@ -647,6 +654,6 @@ Specifically, her tasks are:
 ```{r convert, include = F}
 # library(xaringanBuilder)
 # 
-# build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.html")
-
+# build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.Rmd")
+# pagedown::chrome_print("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.Rmd")
 ```
