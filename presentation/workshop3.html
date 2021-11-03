@@ -29,11 +29,6 @@ class: center, middle, inverse, title-slide
     display: block !important;
   }
 }
-.large4 { font-size: 400% }
-.large2 { font-size: 200% }
-.small90 { font-size: 90% }
-.small75 { font-size: 75% }
-
 &lt;/style&gt;
 
 
@@ -43,9 +38,7 @@ class: center, middle, inverse, title-slide
 
 ☑ Make sure you have a Gmail account 
 
-☑ Can open the uploaded Google Colab notebook (.ipynb) file to fill in - sample [here](https://colab.research.google.com/drive/1PEPk-bhW0c9f2VizQ0Fp2OrvxQd_LLvp#scrollTo=qzo7pyYtr7LI)
-
-☑ Add any reading?
+☑ Upload and open the `Workshop3_Student.ipynb` file in Google Colab
 
 ---
 
@@ -61,13 +54,16 @@ class: center, middle, inverse, title-slide
 
   - Importing libraries in Python
   - Importing files to Google Colab 
-  - Working with Data and Python Packages
+  - Working with data and Python packages
 
 ---
 
 # Learning Outcomes
 
-- To add
+- Explain the value of learning Python
+- Demonstrate how to work with Google Colab 
+- Define lists and dictionaries as it relates to Python
+- Access and manipulate data in lists and dictionaries 
 
 ---
 class: inverse, center, middle
@@ -90,13 +86,6 @@ name: motivation
 # Python and R
 
 .pull-left[
-**R**
-- Optimized for statistical analysis and data visualization
-- Rich libraries for data cleaning, creating visualizations, training and evaluating machine learning and deep learning algorithms
-- Strength of MFRE professors and team
-]
-
-.pull-right[
 **Python**
 - General-purpose, object oriented programming
 - Can more easily import SQL tables and other data from web
@@ -104,13 +93,28 @@ name: motivation
 
 ]
 
-&gt;  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
+.pull-right[
+**R**
+- Optimized for statistical analysis and data visualization
+- Rich libraries for data cleaning, creating visualizations, training and evaluating machine learning and deep learning algorithms
+- Strength of MFRE professors and team
+]
 
-&gt; &lt;footer&gt;--- IBM&lt;/footer&gt;
 
 
 .footnote[
 [1] [IBM](https://www.ibm.com/cloud/blog/python-vs-r)
+]
+
+---
+
+# Python and R
+
+.center2[
+&gt;  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
+
+&gt; &lt;footer&gt;--- IBM&lt;/footer&gt;
+
 ]
 
 ---
@@ -131,15 +135,17 @@ name: get_started
 ---
 # Google Colab
 
-For this workshop and the Analytics course next semester, we will use [Google Colab](https://colab.research.google.com/). All you need is a working Gmail account.  
+For this workshop and the Analytics course next semester, we will use [Google Colab](https://colab.research.google.com/). 
 
+  - All you need is a working Gmail account
   - No need to install any software 
   - Works on Windows and MacOS
-  - Can easily share with colleagues
+  - Can easily share codes with colleagues
 
 Keyboard shortcuts
   - `Ctrl + Enter` to run
   - `Ctrl + M + B` to insert code chunk
+  - `Ctrl + /` to comment out a code chunk (+ `Cmd` for Mac)
   
 ---
 # Try it out
@@ -267,7 +273,8 @@ We can perform mathematical calculations in Python using basic operators `+, -, 
 ```
 
 ---
-# Operators
+
+# Logic Operators
 
 We can also use comparison and logic operators: `&lt;, &gt;, ==, !=, &lt;=, &gt;=` and statements of identity such as `and, or, not`. The data type returned is called **boolean**.
 
@@ -438,6 +445,8 @@ print(example1[4:])
 ## ['china', 7.06, 'japan', 9.14]
 ```
 
+How do you print China's and Japan's emission only using data from `example2`?
+
 ---
 # Lists
 
@@ -538,23 +547,24 @@ print(sum(carbon))
 ## 48.1
 ```
 
+---
 # Lists
 
-We can use a `for` loop to access the elements in a list or other Python data structure one at a time:
+We can use a `for` loop to access the elements in a list one at a time:
 
 
 ```python
-gdp = [44100, 55700, 16200, 39300]
+carbon = [15.3, 16.6, 7.06, 9.14]
 
-for i in gdp:
-  print(i)
+for emissions in carbon:
+  print(emissions)
 ```
 
 ```
-## 44100
-## 55700
-## 16200
-## 39300
+## 15.3
+## 16.6
+## 7.06
+## 9.14
 ```
 
 ---
@@ -727,13 +737,6 @@ china_data = {'gdp':16200, 'carbon':7.06}
 
 #Add China to data
 data['china'] = china_data
-
-# Need to fix
-print(data)
-```
-
-```
-## {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
 ```
 
 ---
@@ -745,7 +748,9 @@ Using `for` loops with dictionaries is a little more complicated.
 
 
 ```python
-data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
+        'usa': {'gdp': 55700, 'carbon': 16.6}, 
+        'china': {'gdp': 16200, 'carbon': 7.06}}
 
 for key, value in data.items():
   print(key, "-&gt;", value)
@@ -764,8 +769,10 @@ for key, value in data.items():
 
 
 ```python
-data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
-
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
+        'usa': {'gdp': 55700, 'carbon': 16.6}, 
+        'china': {'gdp': 16200, 'carbon': 7.06}}
+      
 for key in data.keys():
   print(key, "-&gt;", data[key])
 ```
@@ -841,10 +848,9 @@ Here is an example of a function named `add_function` that takes two arguments a
 ```python
 def add_function(a, b):
   result = a + b
-  return result
+  print(result)
 
-z = add_function(20, 22)
-print(z)
+add_function(20, 22)
 ```
 
 ```
@@ -863,12 +869,30 @@ Kim has been asked to use Python to analyze the following dataset.
 &lt;img src="pics/casestudy.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 Specifically, her tasks are:
-- Create one or more Python "dictionaries" for all data in the above table
+- Create one or more Python "dictionaries" for all data in the above table (Hint: You can use nested dictionaries for fruits and quantity/rejected, and use lists to hold the values)
 - Print fruit dictionary
 - Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
 - Calculate and print the rejection rate
 - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
+---
+# Recap
+
+- Explain the value of learning Python
+- Demonstrate how to work with Google Colab 
+- Define lists and dictionaries as it relates to Python
+- Access and manipulate data in lists and dictionaries 
+
+---
+# Python II
+
+- Next Monday, November 15
+- Topics:
+
+  - Importing libraries in Python
+  - Importing files to Google Colab 
+  - Working with data and Python packages
+  
 ---
 # References
 

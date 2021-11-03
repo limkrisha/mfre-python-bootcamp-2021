@@ -22,11 +22,6 @@ output:
     display: block !important;
   }
 }
-.large4 { font-size: 400% }
-.large2 { font-size: 200% }
-.small90 { font-size: 90% }
-.small75 { font-size: 75% }
-
 ```
 
 ```{r setup, include=FALSE}
@@ -50,9 +45,7 @@ reticulate::repl_python()
 
 ☑ Make sure you have a Gmail account 
 
-☑ Can open the uploaded Google Colab notebook (.ipynb) file to fill in - sample [here](https://colab.research.google.com/drive/1PEPk-bhW0c9f2VizQ0Fp2OrvxQd_LLvp#scrollTo=qzo7pyYtr7LI)
-
-☑ Add any reading?
+☑ Upload and open the `Workshop3_Student.ipynb` file in Google Colab
 
 ---
 
@@ -68,13 +61,16 @@ reticulate::repl_python()
 
   - Importing libraries in Python
   - Importing files to Google Colab 
-  - Working with Data and Python Packages
+  - Working with data and Python packages
 
 ---
 
 # Learning Outcomes
 
-- To add
+- Explain the value of learning Python
+- Demonstrate how to work with Google Colab 
+- Define lists and dictionaries as it relates to Python
+- Access and manipulate data in lists and dictionaries 
 
 ---
 class: inverse, center, middle
@@ -97,13 +93,6 @@ name: motivation
 # Python and R
 
 .pull-left[
-**R**
-- Optimized for statistical analysis and data visualization
-- Rich libraries for data cleaning, creating visualizations, training and evaluating machine learning and deep learning algorithms
-- Strength of MFRE professors and team
-]
-
-.pull-right[
 **Python**
 - General-purpose, object oriented programming
 - Can more easily import SQL tables and other data from web
@@ -111,13 +100,28 @@ name: motivation
 
 ]
 
->  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
+.pull-right[
+**R**
+- Optimized for statistical analysis and data visualization
+- Rich libraries for data cleaning, creating visualizations, training and evaluating machine learning and deep learning algorithms
+- Strength of MFRE professors and team
+]
 
-> `r tufte::quote_footer('--- IBM')`
 
 
 .footnote[
 [1] [IBM](https://www.ibm.com/cloud/blog/python-vs-r)
+]
+
+---
+
+# Python and R
+
+.center2[
+>  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
+
+> `r tufte::quote_footer('--- IBM')`
+
 ]
 
 ---
@@ -140,15 +144,17 @@ name: get_started
 ---
 # Google Colab
 
-For this workshop and the Analytics course next semester, we will use [Google Colab](https://colab.research.google.com/). All you need is a working Gmail account.  
+For this workshop and the Analytics course next semester, we will use [Google Colab](https://colab.research.google.com/). 
 
+  - All you need is a working Gmail account
   - No need to install any software 
   - Works on Windows and MacOS
-  - Can easily share with colleagues
+  - Can easily share codes with colleagues
 
 Keyboard shortcuts
   - `Ctrl + Enter` to run
   - `Ctrl + M + B` to insert code chunk
+  - `Ctrl + /` to comment out a code chunk (+ `Cmd` for Mac)
   
 ---
 # Try it out
@@ -216,7 +222,8 @@ We can perform mathematical calculations in Python using basic operators `+, -, 
 ```
 
 ---
-# Operators
+
+# Logic Operators
 
 We can also use comparison and logic operators: `<, >, ==, !=, <=, >=` and statements of identity such as `and, or, not`. The data type returned is called **boolean**.
 
@@ -294,8 +301,9 @@ example1 = ["canada", 15.3, "usa", 16.6, "china", 7.06, "japan", 9.14]
 print(example1[2:6])
 print(example1[:4])
 print(example1[4:])
-
 ```
+
+How do you print China's and Japan's emission only using data from `example2`?
 
 ---
 # Lists
@@ -367,15 +375,16 @@ carbon = [15.3, 16.6, 7.06, 9.14]
 print(sum(carbon))
 ```
 
+---
 # Lists
 
-We can use a `for` loop to access the elements in a list or other Python data structure one at a time:
+We can use a `for` loop to access the elements in a list one at a time:
 
 ```{python}
-gdp = [44100, 55700, 16200, 39300]
+carbon = [15.3, 16.6, 7.06, 9.14]
 
-for i in gdp:
-  print(i)
+for emissions in carbon:
+  print(emissions)
 ```
 
 ---
@@ -506,8 +515,6 @@ china_data = {'gdp':16200, 'carbon':7.06}
 #Add China to data
 data['china'] = china_data
 
-# Need to fix
-print(data)
 ```
 
 ---
@@ -518,7 +525,9 @@ Using `for` loops with dictionaries is a little more complicated.
 1) Method 1
 
 ```{python}
-data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
+        'usa': {'gdp': 55700, 'carbon': 16.6}, 
+        'china': {'gdp': 16200, 'carbon': 7.06}}
 
 for key, value in data.items():
   print(key, "->", value)
@@ -530,8 +539,10 @@ for key, value in data.items():
 2) Method 2
 
 ```{python}
-data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 'usa': {'gdp': 55700, 'carbon': 16.6}, 'china': {'gdp': 16200, 'carbon': 7.06}}
-
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
+        'usa': {'gdp': 55700, 'carbon': 16.6}, 
+        'china': {'gdp': 16200, 'carbon': 7.06}}
+      
 for key in data.keys():
   print(key, "->", data[key])
 ```
@@ -582,10 +593,9 @@ Here is an example of a function named `add_function` that takes two arguments a
 ```{python}
 def add_function(a, b):
   result = a + b
-  return result
+  print(result)
 
-z = add_function(20, 22)
-print(z)
+add_function(20, 22)
 ```
 
 .footnote[
@@ -602,12 +612,30 @@ knitr::include_graphics("pics/casestudy.png")
 ```
 
 Specifically, her tasks are:
-- Create one or more Python "dictionaries" for all data in the above table
+- Create one or more Python "dictionaries" for all data in the above table (Hint: You can use nested dictionaries for fruits and quantity/rejected, and use lists to hold the values)
 - Print fruit dictionary
 - Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
 - Calculate and print the rejection rate
 - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
+---
+# Recap
+
+- Explain the value of learning Python
+- Demonstrate how to work with Google Colab 
+- Define lists and dictionaries as it relates to Python
+- Access and manipulate data in lists and dictionaries 
+
+---
+# Python II
+
+- Next Monday, November 15
+- Topics:
+
+  - Importing libraries in Python
+  - Importing files to Google Colab 
+  - Working with data and Python packages
+  
 ---
 # References
 
@@ -617,8 +645,8 @@ Specifically, her tasks are:
 
 
 ```{r convert, include = F}
-#library(xaringanBuilder)
-
-#build_pdf("C:/Users/krishlim/OneDrive - The University Of British Columbia/Desktop/mfre/workshop1/presentation/r-excel-with-answers.html")
+# library(xaringanBuilder)
+# 
+# build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.html")
 
 ```
