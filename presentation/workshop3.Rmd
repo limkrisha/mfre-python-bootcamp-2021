@@ -131,6 +131,34 @@ name: motivation
 knitr::include_graphics("pics/tweet_nick.png")
 ```
 
+---
+
+# Why learn one more language?
+
+```{r, echo = FALSE, out.width = "85%"}
+knitr::include_graphics("pics/apps.jpg")
+```
+
+---
+
+# Why learn one more language?
+
+- Advanced Excel skills
+  - Consultant in Food & Beverage/Agriculture (MNP Consulting)
+  - Demand Planner (Semios)
+  - Data Research Analyst (Tridge)
+  
+- Python or R (+ SQL)
+  - Data Analyst (Earls Kitchen + Bar, Telus Agriculture)
+  - Fleet Analyst (BC Transit)
+  - Data Solutions Specialist (BC Public Service)
+  - Grocery Data Domain Program Lead (Sobeys)
+  - Research Associate (Ocean Wise)
+
+- Tableau or Power BI (or other BI tools)
+  - Data Visualization Specialist & Tableau Administrator (BC Centre for Disease Control)
+  - Business Analyst (Telus Health - Agribusiness Enablement & Strategy)
+  - Financial Analyst (SPUD.ca)
 
 ---
 class: inverse, center, middle
@@ -161,6 +189,8 @@ Keyboard shortcuts
 You are expected to fill in the Google Colab file. 
 
 At the end of the workshop, share this file to my UBC email.
+
+**Share -> Change from "Restricted" to "Anyone with the link" -> Share with my UBC email**
 
 ---
 # Try it out
@@ -632,7 +662,6 @@ Specifically, her tasks are:
 - Calculate and print the rejection rate
 - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
-
 ---
   # Case Study - Suggested Solutions
   
@@ -690,10 +719,14 @@ fruit = {'oranges': {'quantity': [3000, 6000, 12000],
 print("Orange max qty =", max(fruit['oranges']['quantity']))
 ```
 
+
 ---
 # Reminder
 
 - Share your Colab file to my UBC email.
+
+**Share -> Change from "Restricted" to "Anyone with the link" -> Share with my UBC email**
+
 
 ---
 # Recap
