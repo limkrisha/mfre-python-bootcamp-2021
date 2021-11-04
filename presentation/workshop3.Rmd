@@ -532,6 +532,7 @@ data = {
 # To print Canada's emissions
 print(data['canada']['carbon'])
 ```
+]
 
 ---
 # Dictionaries

@@ -1,0 +1,368 @@
+---
+title: "MFRE Data Analytics Workshop Series"
+subtitle: "Workshop 4: Python II"
+author: "Krisha Lim"
+date: "University of British Columbia | Master of Food and Resource Economics November 15, 2021" #"`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: false
+      countIncrementalSlides: false
+---
+
+```{css, echo=FALSE}
+# CSS for including pauses in printed PDF output (see bottom of lecture)
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+
+.gray { color: gray;}
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center",  
+  fig.height=4, #fig.width=6,
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=T#, echo=F, warning=F, message=F
+  )
+
+pacman::p_load(tidyverse, dplyr)
+reticulate::repl_python()
+# reticulate::install_miniconda()
+```
+
+
+# Workshop preparation
+
+☑ Make sure you have shared with me your completed `Workshop3_Student.ipynb` in Google Colab
+
+☑ Review Workshop 3 - Python I notes and codes
+
+☑ Upload and open the `Workshop4_Student.ipynb` file in Google Colab
+
+---
+
+# Overview
+
+.gray[
+**Python I**
+
+  - Google Colab
+  - Variable Types - String, Integer, Float, Boolean
+  - Lists, Dictionaries, Functions
+
+]
+
+**Python II**
+
+  - Importing libraries in Python
+  - Importing files to Google Colab 
+  - Working with data and Python packages
+
+---
+
+# Learning Outcomes
+
+- Formulate simple function  ** only if not covered in Workshop 1
+- Load data into Colab from a variety of sources
+- Perform basic data cleaning and transformation steps
+- Leverage Python library functions
+
+---
+class: inverse, center, middle
+name: get_started
+
+# Python I
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+# Review - Lists
+
+- Use **square brackets** to define lists
+- Start at **index = 0**
+- Use `list_name[start_included:end_excluded]` to access lists
+
+```{python}
+carbon = [15.3, 16.6, 7.06, 9.14]
+
+# extract second and third values
+print(carbon[1:3])
+```
+---
+# Review - Dictionaries
+
+- Use **curly brackets** to define dictionaries
+- Contain *key:value* pairs
+
+```{python}
+data = {
+  'canada': {'gdp':44100,
+            'carbon':15.3},
+  'usa': {'gdp':55700,
+          'carbon':16.6}
+}
+
+# print canada's carbon emissions
+print("Canada's carbon emissions = ", data['canada']['carbon'])
+```
+---
+class: inverse, center, middle
+name: get_started
+
+# Python II
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+# Data
+
+- 3 months of historical sales of a supermarket with 3 branches in Myanmar (formerly Burma) 
+- Downloaded from [Kaggle](https://www.kaggle.com/)
+- **Add more here**
+
+---
+# About Packages
+
+A library in Python contains a set of tools (called functions) that perform tasks on our data. 
+
+Importing a library is like getting a piece of lab equipment out of a storage locker and setting it up on the bench for use in a project. 
+
+Once a library is set up, it can be used or called to perform the task(s) it was built to do.
+
+---
+# About Packages
+
+**Modules**
+- collection of related code to keep codes organized
+
+**Packages**
+- collection of modules
+- Examples: 
+  - [`NumPy`](https://numpy.org/) - scientific computing
+  - [`pandas`](https://pandas.pydata.org/) - processing data
+
+**Libraries**
+- usually refers to a collection of packages (or related modules and packages)
+- Examples: 
+  - [`matplotlib`](https://matplotlib.org/) - data visualization
+  - [`TensorFlow`](https://www.tensorflow.org/resources/libraries-extensions) - machine learning
+
+.footnote[
+[1] Kateryna Koidan, ["Difference between Python modules, packages, librariers, and frameworks"](https://learnpython.com/blog/python-modules-packages-libraries-frameworks/)
+]
+
+---
+# Pandas
+
+- The [Python Data Analysis Library](https://pandas.pydata.org/) (a.k.a. Pandas) is one of the best and most famous packages working with tabular data in Python. The Pandas library provides data structures, produces high quality plots with [`matplotlib`](https://matplotlib.org/) and integrates nicely with other libraries that use [`NumPy`](https://numpy.org/) arrays. 
+
+---
+# Installing packages
+
+- `pip` is Python's package manager
+  - Need to frontend with `!` to execute a shell/cmd command 
+- `!pip list` prints out the lists of Python packages that is already in Colab
+- `!pip install [package_name]` to install packages / libraries
+  - `!pip install pandas` or `!pip install matplotlib`
+
+---
+# Importing packages
+
+- In Python, we use the `import` function to import packages, modules, and libraries
+  - It's like we have to use `library()` to load a package we have already installed using `install.packages()` in R
+- Some syntax
+  - `import numpy` -> Import the package Numpy and its functions
+  - `import numpy as np` -> Shortens the imported name to `np` for better code readability
+  - `from numpy import arange` -> Imports the `arange` function from `NumPy`
+
+.footnote[
+[1] [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html)
+]
+
+---
+# Using functions in packages
+
+- Each time we call a function, we use the syntax `LibraryName.FunctionName`. 
+
+- Adding the library name with a `.` before the function name tells Python where to find the function. 
+
+---
+# Importing modules or packages
+
+```{python}
+import numpy
+a = numpy.arange(6)
+a
+```
+
+```{python}
+import numpy as np
+a = np.arange(6)
+a
+```
+
+```{python}
+from numpy import arange
+a = arange(6)
+a
+```
+
+---
+# Importing modules or packages
+
+When to use which syntax? *It depends*
+
+- If you will use only one function (e.g., `arange`) from the package multiple times, then use `from numpy import range`.
+- If you will use multiple functions from the package, then use `import numpy as np`.
+- There is actually another way (`from numpy import *`) but is not advisable when there are overlapping function names from different modules or packages
+
+.footnote[
+[1] Read [here](https://www.quora.com/What-is-the-difference-between-import-numpy-and-from-numpy-import-*) for more details
+]
+
+---
+# Data Import - Local Drive
+
+- Say you have the `.csv` or `.xlsx` file stored in your device
+- Run this code first
+
+```{python, eval = F}
+from google.colab import files
+uploaded = files.upload()
+```
+
+- A pop up will appear where you can select the file you want to work with. 
+
+- Use `df.read_csv()` to read `.csv` files and `df.read_xlsx()` to read `.xlsx` files as `pandas` dataframe
+
+```{python, eval = F}
+df = pd.read_csv("myanmar-supermarket.csv")
+df.head(5)
+```
+
+---
+# Data Import - Google Drive
+
+- Say you have the `.csv` or `.xlsx` file stored your Google Drive
+- Run this code to mount your Google Drive
+
+```{python, eval = F}
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+- Click the link, give authorization, and copy the authorization code and paste into the textbox in Colab
+
+```{python, eval = F}
+df2 = pd.read_csv("/content/drive/MyDrive/myanmar-supermarket.csv")
+df2.head(5)
+```
+
+---
+
+# Data Import - Google Drive
+
+- Say you want to import a lot of files from the same directory in Google Drive
+
+```{python, eval = F}
+import os
+os.getcwd()
+
+dir = os.getcwd()
+
+df3 = pd.read_csv(dir + "/MyDrive/myanmar-supermarket.csv")
+df3.head(5)
+```
+
+- If all your files are in the `/MyDrive/` extension, you can also add that to the object `dir`
+
+```{python, eval = F}
+import os
+os.getcwd()
+
+dir = os.getcwd() + "/MyDrive"
+
+df4 = pd.read_csv(dir + "/myanmar-supermarket.csv")
+df4.head(5)
+```
+
+---
+# Data Import - Package/API
+
+- Recall we used the [{`cansim`}](https://mountainmath.github.io/cansim/) package to access Statistics Canada data in R during the R bootcamp and Workshop 2 (Data Visualization)
+
+- The equivalent in Python is [`stats_can`](https://stats-can.readthedocs.io/en/latest/)
+
+```{python, eval = F}
+# install package
+!pip install stats-can
+
+# change the directorty to MyDrive
+%cd /content/drive/MyDrive/
+
+# instantiate a StatsCan object
+from stats_can import StatsCan
+sc = StatsCan()
+
+# read statscan table into a panda dataframe
+df = sc.table_to_df("36-10-0222-01")
+df.head(5)
+```
+
+---
+# Dataframes
+
+- A Dataframe is a 2-dimensional data structure that can store different types of data, such as characters, integers, floats, factors, etc. It is similar to an Excel spreadsheet or an SQL table or the `data.frame` in R. 
+
+- As in Python lists, a dataframe always has an index that starts at 0. 
+
+- An index refers to the position of an element in the data structure.
+
+---
+# Dataframes
+
+```{python, eval = F}
+import pandas as pd
+supermarket = pd.read_csv("C:\Users\krishlim\OneDrive - UBC\Desktop\mfre\2021w-python-bootcamp\data")
+```
+
+
+
+---
+# Recap
+
+- Formulate simple function  ** only if not covered in Workshop 1
+- Load data into Colab from a variety of sources
+- Perform basic data cleaning and transformation steps
+- Leverage Python library functions
+
+---
+# What's next?
+
+- UBC MDS' [Programming in Python for Data Science](https://prog-learn.mds.ubc.ca/en/module0/)
+
+---
+# References
+
+- [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/00-before-we-start/index.html) by Data Carpentry
+
+
+
+
+```{r convert, include = F}
+# library(xaringanBuilder)
+# 
+# build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.html")
+# pagedown::chrome_print("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.Rmd")
+```
