@@ -35,6 +35,7 @@ class: center, middle, inverse, title-slide
 
 
 
+
 # Workshop preparation
 
 ☑ Make sure you have shared with me your completed `Workshop3_Student.ipynb` in Google Colab
@@ -67,8 +68,11 @@ class: center, middle, inverse, title-slide
 # Learning Outcomes
 
 - Formulate simple function  ** only if not covered in Workshop 1
+
 - Load data into Colab from a variety of sources
+
 - Perform basic data cleaning and transformation steps
+
 - Leverage Python library functions
 
 ---
@@ -174,16 +178,20 @@ Once a library is set up, it can be used or called to perform the task(s) it was
 # Installing packages
 
 - `pip` is Python's package manager
-  - Need to frontend with `!` to execute a shell/cmd command 
+  - Need to frontend with `!` to execute a shell/cmd command in Colab
+  
 - `!pip list` prints out the lists of Python packages that is already in Colab
+
 - `!pip install [package_name]` to install packages / libraries
   - `!pip install pandas` or `!pip install matplotlib`
+  - `!pip install pandas matplotlib` to install multiple packages at once
 
 ---
 # Importing packages
 
 - In Python, we use the `import` function to import packages, modules, and libraries
   - It's like we have to use `library()` to load a package we have already installed using `install.packages()` in R
+  
 - Some syntax
   - `import numpy` -&gt; Import the package Numpy and its functions
   - `import numpy as np` -&gt; Shortens the imported name to `np` for better code readability
@@ -242,7 +250,9 @@ a
 When to use which syntax? *It depends*
 
 - If you will use only one function (e.g., `arange`) from the package multiple times, then use `from numpy import range`.
+
 - If you will use multiple functions from the package, then use `import numpy as np`.
+
 - There is actually another way (`from numpy import *`) but is not advisable when there are overlapping function names from different modules or packages
 
 .footnote[
@@ -253,10 +263,15 @@ When to use which syntax? *It depends*
 # Data Import - Local Drive
 
 - Say you have the `.csv` or `.xlsx` file stored in your device
+
 - Run this code first
 
 
 ```python
+# import pandas
+import pandas as pd
+
+# initiate file import 
 from google.colab import files
 uploaded = files.upload()
 ```
@@ -267,14 +282,16 @@ uploaded = files.upload()
 
 
 ```python
-df = pd.read_csv("myanmar-supermarket.csv")
-df.head(5)
+# load file to object called 'supermarket'
+supermarket = pd.read_csv("myanmar-supermarket.csv")
+supermarket.head(5)
 ```
 
 ---
 # Data Import - Google Drive
 
 - Say you have the `.csv` or `.xlsx` file stored your Google Drive
+
 - Run this code to mount your Google Drive
 
 
@@ -287,8 +304,9 @@ drive.mount('/content/drive')
 
 
 ```python
-df2 = pd.read_csv("/content/drive/MyDrive/myanmar-supermarket.csv")
-df2.head(5)
+# load file to object called 'from_drive'
+from_drive = pd.read_csv("/content/drive/MyDrive/myanmar-supermarket.csv")
+from_drive.head(5)
 ```
 
 ---
@@ -297,28 +315,28 @@ df2.head(5)
 
 - Say you want to import a lot of files from the same directory in Google Drive
 
-
-```python
-import os
-os.getcwd()
-
-dir = os.getcwd()
-
-df3 = pd.read_csv(dir + "/MyDrive/myanmar-supermarket.csv")
-df3.head(5)
-```
-
-- If all your files are in the `/MyDrive/` extension, you can also add that to the object `dir`
+- It would be better to specify the working directory to your Google Drive folder
+  - We will use a package called `os` which will allow us to get the working directory
 
 
 ```python
+# import os package
 import os
+
+# print the current wd
 os.getcwd()
 
-dir = os.getcwd() + "/MyDrive"
+# We want the dir to be "/content/drive/MyDrive" 
 
-df4 = pd.read_csv(dir + "/myanmar-supermarket.csv")
-df4.head(5)
+# if current wd is "/content" then 
+dir = os.getcwd() + "/drive/MyDrive/" 
+
+# if current wd is "/content/drive/" 
+dir = os.getcwd() + "/MyDrive/"
+ 
+# load file using `dir` in file path to object called `from_drive_path`
+from_drive_path = pd.read_csv(dir + "myanmar-supermarket.csv")
+from_drive_path.head(5)
 ```
 
 ---
@@ -333,11 +351,14 @@ df4.head(5)
 # install package
 !pip install stats-can
 
-# change the directorty to MyDrive
-%cd /content/drive/MyDrive/
+# change the directory to MyDrive
+%pwd # prints the working directory
+%cd /content/drive/MyDrive/ # set wd to MyDrive (if you haven't done earlier)
+
+# import stats_can package from StatsCan 
+from stats_can import StatsCan
 
 # instantiate a StatsCan object
-from stats_can import StatsCan
 sc = StatsCan()
 
 # read statscan table into a panda dataframe
@@ -358,19 +379,60 @@ df.head(5)
 # Dataframes
 
 
+
+
 ```python
-import pandas as pd
-supermarket = pd.read_csv("C:\Users\krishlim\OneDrive - UBC\Desktop\mfre\2021w-python-bootcamp\data")
+supermarket.head(5)
 ```
 
+```
+##     Invoice ID Branch       City  ... gross margin percentage gross income Rating
+## 0  750-67-8428      A     Yangon  ...                4.761905      26.1415    9.1
+## 1  226-31-3081      C  Naypyitaw  ...                4.761905       3.8200    9.6
+## 2  631-41-3108      A     Yangon  ...                4.761905      16.2155    7.4
+## 3  123-19-1176      A     Yangon  ...                4.761905      23.2880    8.4
+## 4  373-73-7910      A     Yangon  ...                4.761905      30.2085    5.3
+## 
+## [5 rows x 17 columns]
+```
+
+---
+# Exploring our data
+
+- Here are a few useful functions to view dataframe objects in Python
 
 
+```python
+# check type of thing `supermarket` object is
+type(supermarket)
+
+# what kind of things does `supermarket` contain? 
+supermarket.dtypes
+
+# access column names of `supermarket`
+supermarket.columns
+
+# access the shape/dimension of `supermarket`
+supermarket.shape
+
+# get first 15 obs of `supermarket`
+supermarket.head(15)
+
+# get last 15 obs of `supermarket`
+supermarket.tail(15)
+```
+
+---
+# Expl
 ---
 # Recap
 
 - Formulate simple function  ** only if not covered in Workshop 1
+
 - Load data into Colab from a variety of sources
+
 - Perform basic data cleaning and transformation steps
+
 - Leverage Python library functions
 
 ---

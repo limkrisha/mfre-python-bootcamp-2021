@@ -106,22 +106,21 @@ name: motivation
 - Strength of MFRE professors and team
 ]
 
-
-
-.footnote[
-[1] [IBM](https://www.ibm.com/cloud/blog/python-vs-r)
-]
-
----
-
-# Python and R
+&nbsp;
 
 .center2[
+
+
 >  Increasingly, the question isn’t which to choose, but how to make the best use of both programming languages for your specific use cases.
 
 > `r tufte::quote_footer('--- IBM')`
 
 ]
+
+.footnote[
+[1] [IBM](https://www.ibm.com/cloud/blog/python-vs-r)
+]
+
 
 ---
 
@@ -156,9 +155,40 @@ knitr::include_graphics("pics/apps.jpg")
   - Research Associate (Ocean Wise)
 
 - Tableau or Power BI (or other BI tools)
-  - Data Visualization Specialist & Tableau Administrator (BC Centre for Disease Control)
   - Business Analyst (Telus Health - Agribusiness Enablement & Strategy)
   - Financial Analyst (SPUD.ca)
+
+---
+# Programming + more
+
+- But programming skills alone are not enough
+
+.pull-left[
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("pics/zillow.png")
+```
+]
+
+.pull-right[
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("pics/prophet.png")
+```
+]
+
+---
+# Programming + more
+
+- But programming skills alone are not enough
+
+- Strong business and economics intuition + verbal and written communication skills + ownership and character 
+
+  - Software as tools 
+  - Having strong quantitative, analytical, and programming skills help though😉
+  
+```{r, echo = FALSE, out.width = "50%"}
+knitr::include_graphics("pics/mfre.png")
+```
+
 
 ---
 class: inverse, center, middle
