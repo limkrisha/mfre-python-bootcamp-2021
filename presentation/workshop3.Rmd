@@ -12,6 +12,8 @@ output:
       highlightLines: true
       highlightSpans: false
       countIncrementalSlides: false
+      navigation:
+          scroll: false
 ---
 
 ```{css, echo=FALSE}
@@ -177,8 +179,6 @@ knitr::include_graphics("pics/prophet.png")
 
 ---
 # Programming + more
-
-- But programming skills alone are not enough
 
 - Strong business and economics intuition + verbal and written communication skills + ownership and character 
 
