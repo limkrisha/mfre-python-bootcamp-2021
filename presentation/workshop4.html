@@ -53,27 +53,30 @@ class: center, middle, inverse, title-slide
 
   - Google Colab
   - Variable Types - String, Integer, Float, Boolean
-  - Lists, Dictionaries, Functions
-
-]
+  - Lists ] 
+  - Dictionaries, Functions
 
 **Python II**
 
   - Importing libraries in Python
   - Importing files to Google Colab 
-  - Working with data and Python packages
+  - **Working with data and Python packages
 
 ---
 
 # Learning Outcomes
 
-- Formulate simple function  ** only if not covered in Workshop 1
+- Create and access values in a dictionary
+
+- Formulate a simple function  
+
+- Install and load libraries into Colab
 
 - Load data into Colab from a variety of sources
 
-- Perform basic data cleaning and transformation steps
+- **Perform basic data cleaning and transformation steps
 
-- Leverage Python library functions
+- **Leverage Python library functions
 
 ---
 class: inverse, center, middle
@@ -101,11 +104,78 @@ print(carbon[1:3])
 ```
 ## [16.6, 7.06]
 ```
+
 ---
 # Review - Dictionaries
 
 - Use **curly brackets** to define dictionaries
 - Contain *key:value* pairs
+
+
+```python
+emissions = {
+  'canada': 15.3, 
+  'usa':16.6,
+  'china':7.06,
+  'japan':9.14
+}
+
+emissions['china']
+```
+
+```
+## 7.06
+```
+
+
+---
+# Dictionaries
+
+To add an item to a dictionary, we assign a value to a new key.
+
+
+```python
+emissions['south korea'] = 12.9
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 7.06, 'japan': 9.14, 'south korea': 12.9}
+```
+
+We can also update the value of an existing key
+
+
+```python
+emissions['south korea'] = 15
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 7.06, 'japan': 9.14, 'south korea': 15}
+```
+
+We use the `del` function to delete a key:value pair.
+
+
+```python
+del(emissions['south korea'])
+
+print(emissions)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 7.06, 'japan': 9.14}
+```
+
+---
+# Dictionaries
+
+Dictionaries can contain key:value pairs where the values are again dictionaries, just like lists can also contain lists. 
+
+In this example, the keys are still country names, but the values are GDP and carbon emissions.
 
 
 ```python
@@ -116,20 +186,203 @@ data = {
           'carbon':16.6}
 }
 
-# print canada's carbon emissions
-print("Canada's carbon emissions = ", data['canada']['carbon'])
+# To print Canada's emissions
+print(data['canada']['carbon'])
 ```
 
 ```
-## Canada's carbon emissions =  15.3
+## 15.3
 ```
+
+
 ---
+# Dictionaries
+
+To add China's GDP and emissions to the `data` dictionary we just created
+
+
+```python
+# first create the china key:value pair
+china_data = {'gdp':16200, 'carbon':7.06}
+
+# then add China to data
+data['china'] = china_data
+```
+
+
+---
+# Dictionaries
+
+Using `for` loops with dictionaries is a little more complicated. 
+
+1) Method 1
+
+
+```python
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
+        'usa': {'gdp': 55700, 'carbon': 16.6}, 
+        'china': {'gdp': 16200, 'carbon': 7.06}}
+
+for key, value in data.items():
+  print(key, "-&gt;", value)
+```
+
+```
+## canada -&gt; {'gdp': 44100, 'carbon': 15.3}
+## usa -&gt; {'gdp': 55700, 'carbon': 16.6}
+## china -&gt; {'gdp': 16200, 'carbon': 7.06}
+```
+
+---
+# Dictionaries
+
+2) Method 2
+
+
+```python
+data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
+        'usa': {'gdp': 55700, 'carbon': 16.6}, 
+        'china': {'gdp': 16200, 'carbon': 7.06}}
+      
+for key in data.keys():
+  print(key, "-&gt;", data[key])
+```
+
+```
+## canada -&gt; {'gdp': 44100, 'carbon': 15.3}
+## usa -&gt; {'gdp': 55700, 'carbon': 16.6}
+## china -&gt; {'gdp': 16200, 'carbon': 7.06}
+```
+
+
+---
+# Dictionaries
+
+Recall last week we created two lists - `carbon` and `country`. 
+
+Can we use convert these two lists to a dataframe? **Yes**
+
+
+```python
+country = ["canada", "usa", "china", "japan"]
+gdp = [44100, 55700, 16200, 39300]
+carbon = [15.3, 16.6, 7.06, 9.14]
+
+# method 1
+dict_loop = {country[i]:carbon[i] for i in range(len(country))}
+print(dict_loop)
+
+
+# method 2
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 7.06, 'japan': 9.14}
+```
+
+```python
+dict_zip = dict(zip(country, carbon))
+print(dict_zip)
+```
+
+```
+## {'canada': 15.3, 'usa': 16.6, 'china': 7.06, 'japan': 9.14}
+```
+
+
+---
+# Functions
+
+A **function** is a code chunk that runs when is called. You can pass inputs called **parameters** or **arguments** into a function and get a result back. 
+
+Defining a section of code as a function in Python is done using the `def` keyword. 
+
+---
+# Functions 
+
+In the example below, we have a function called `my_function` that takes one argument `fname`. When `my_function` is called, we pass along a first name, which is used inside the function to print the student name. 
+
+
+```python
+def my_function(fname):
+  print("Hello " + fname + ". Welcome to class today!")
+  
+my_function("Krisha")
+```
+
+```
+## Hello Krisha. Welcome to class today!
+```
+
+```python
+my_function("Janelle")
+```
+
+```
+## Hello Janelle. Welcome to class today!
+```
+
+.footnote[
+[1] [W3 Schools Tutorial](https://www.w3schools.com/python/python_functions.asp) 
+]
+
+
+---
+# Functions - give it a try
+
+How would you modify `my_function` so that it would print the inputted first and last names? 
+
+
+```python
+def my_function(fname):
+  print("Hello " + fname + ". Welcome to class today!")
+```
+
+---
+# Functions
+
+Here is an example of a function named `add_function` that takes two arguments and returns their sum:
+
+
+```python
+def add_function(a, b):
+  result = a + b
+  print(result)
+
+add_function(20, 22)
+```
+
+```
+## 42
+```
+
+---
+
 class: inverse, center, middle
 name: get_started
 
 # Python II
 
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+# Overview
+
+.gray[
+**Python I**
+
+  - Google Colab
+  - Variable Types - String, Integer, Float, Boolean
+  - Lists, Dictionaries, Functions
+
+]
+
+**Python II**
+
+  - Importing libraries in Python
+  - Importing files to Google Colab 
+  - Working with data and Python packages
 
 ---
 # Data
@@ -423,7 +676,9 @@ supermarket.tail(15)
 ```
 
 ---
-# Expl
+# Calculating summary statistics
+
+
 ---
 # Recap
 
