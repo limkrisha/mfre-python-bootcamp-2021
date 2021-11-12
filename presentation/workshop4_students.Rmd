@@ -65,12 +65,11 @@ pandas <- import("pandas")
 
 # Overview
 
-.gray[
-**Python I**
+.gray[**Python I**
 
   - Google Colab
   - Variable Types - String, Integer, Float, Boolean
-  - Lists ] 
+  - Lists] 
   - Dictionaries, Functions
 
 **Python II**
@@ -161,7 +160,7 @@ print(emissions)
 ---
 # Dictionaries
 
-Dictionaries can contain key:value pairs where the values are again dictionaries, just like lists can also contain lists. 
+Dictionaries can contain key:value pairs where the values are also dictionaries, just like lists can also contain lists. 
 
 In this example, the keys are still country names, but the values are GDP and carbon emissions.
 
@@ -307,7 +306,7 @@ name: get_started
 
   - Importing libraries in Python
   - Importing files to Google Colab 
-  - Working with data and Python packages
+  - **Working with data and Python packages
 
 ---
 # About Packages
@@ -544,9 +543,12 @@ Specifically, her tasks are:
 ---
 # Over the holidays
 
+- Review Python I and Python II notes - be ready for a quiz in 521D 🤓
+
+- Work through the "Working with Data" section (Exploring our Data and Calculating Summary Statistics) in the Workshop 4 codes
+
 - UBC MDS' [Programming in Python for Data Science](https://prog-learn.mds.ubc.ca/en/module0/)
 
-- Review Python I and Python II notes - be ready for a quiz in 521D 🤓
 
 ---
 # References
@@ -555,8 +557,8 @@ Specifically, her tasks are:
 
 
 ```{r convert, include = F}
-# library(xaringanBuilder)
+library(xaringanBuilder)
 # 
-# build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.html")
+build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop4.html")
 # pagedown::chrome_print("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.Rmd")
 ```

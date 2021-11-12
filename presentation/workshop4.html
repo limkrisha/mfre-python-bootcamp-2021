@@ -48,17 +48,16 @@ class: center, middle, inverse, title-slide
 
 # Overview
 
-.gray[
-**Python I**
+.gray[**Python I**
 
   - Google Colab
   - Variable Types - String, Integer, Float, Boolean
-  - Lists ] 
+  - Lists] 
   - Dictionaries, Functions
 
 **Python II**
 
-  - Importing libraries in Python
+  - Importing packages in Python
   - Importing files to Google Colab 
   - **Working with data and Python packages
 
@@ -72,11 +71,7 @@ class: center, middle, inverse, title-slide
 
 - Install and load libraries into Colab
 
-- Load data into Colab from a variety of sources
-
-- **Perform basic data cleaning and transformation steps
-
-- **Leverage Python library functions
+- Load data into Colab from a number of sources
 
 ---
 class: inverse, center, middle
@@ -173,7 +168,7 @@ print(emissions)
 ---
 # Dictionaries
 
-Dictionaries can contain key:value pairs where the values are again dictionaries, just like lists can also contain lists. 
+Dictionaries can contain key:value pairs where the values are also dictionaries, just like lists can also contain lists. 
 
 In this example, the keys are still country names, but the values are GDP and carbon emissions.
 
@@ -243,7 +238,7 @@ for key, value in data.items():
 data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
         'usa': {'gdp': 55700, 'carbon': 16.6}, 
         'china': {'gdp': 16200, 'carbon': 7.06}}
-      
+  
 for key in data.keys():
   print(key, "-&gt;", data[key])
 ```
@@ -268,12 +263,8 @@ country = ["canada", "usa", "china", "japan"]
 gdp = [44100, 55700, 16200, 39300]
 carbon = [15.3, 16.6, 7.06, 9.14]
 
-# method 1
 dict_loop = {country[i]:carbon[i] for i in range(len(country))}
 print(dict_loop)
-
-
-# method 2
 ```
 
 ```
@@ -293,7 +284,7 @@ print(dict_zip)
 ---
 # Functions
 
-A **function** is a code chunk that runs when is called. You can pass inputs called **parameters** or **arguments** into a function and get a result back. 
+A **function** is a code chunk that runs when called. You can pass inputs called **parameters** or **arguments** into a function and get a result back. 
 
 Defining a section of code as a function in Python is done using the `def` keyword. 
 
@@ -330,7 +321,7 @@ my_function("Janelle")
 ---
 # Functions - give it a try!
 
-1. How would you modify `my_function` so that it would print the inputted first and last names? 
+**How would you modify `my_function` so that it would print the inputted first and last names?**
 
 
 ```python
@@ -338,7 +329,7 @@ def my_function(fname):
   print("Hello " + fname + ". Welcome to class today!")
 ```
 
-2. Create a function called `add_function` that takes 2 numbers and returns their sum
+**Create a function called `add_function` that takes 2 numbers and returns their sum**
 
 
 ---
@@ -367,14 +358,7 @@ name: get_started
 
   - Importing libraries in Python
   - Importing files to Google Colab 
-  - Working with data and Python packages
-
----
-# Data
-
-- 3 months of historical sales of a supermarket with 3 branches in Myanmar (formerly Burma) 
-- Downloaded from [Kaggle](https://www.kaggle.com/)
-- **Add more here**
+  - **Working with data and Python packages
 
 ---
 # About Packages
@@ -395,7 +379,7 @@ Once a library is set up, it can be used or called to perform the task(s) it was
 - collection of modules
 - Examples: 
   - [`NumPy`](https://numpy.org/) - scientific computing
-  - [`pandas`](https://pandas.pydata.org/) - processing data
+  - [`pandas`](https://pandas.pydata.org/) - data analysis
 
 **Libraries**
 - usually refers to a collection of packages (or related modules and packages)
@@ -406,11 +390,6 @@ Once a library is set up, it can be used or called to perform the task(s) it was
 .footnote[
 [1] Kateryna Koidan, ["Difference between Python modules, packages, librariers, and frameworks"](https://learnpython.com/blog/python-modules-packages-libraries-frameworks/)
 ]
-
----
-# Pandas
-
-- The [Python Data Analysis Library](https://pandas.pydata.org/) (a.k.a. Pandas) is one of the best and most famous packages working with tabular data in Python. The Pandas library provides data structures, produces high quality plots with [`matplotlib`](https://matplotlib.org/) and integrates nicely with other libraries that use [`NumPy`](https://numpy.org/) arrays. 
 
 ---
 # Installing packages
@@ -496,6 +475,12 @@ When to use which syntax? *It depends*
 .footnote[
 [1] Read [here](https://www.quora.com/What-is-the-difference-between-import-numpy-and-from-numpy-import-*) for more details
 ]
+
+---
+# Data
+
+- 3 months of historical sales of a supermarket with 3 branches in Myanmar (formerly Burma) 
+- Downloaded from [Kaggle](https://www.kaggle.com/)
 
 ---
 # Data Import - Local Drive
@@ -589,10 +574,6 @@ from_drive_path.head(5)
 # install package
 !pip install stats-can
 
-# change the directory to MyDrive
-%pwd # prints the working directory
-%cd /content/drive/MyDrive/ # set wd to MyDrive (if you haven't done earlier)
-
 # import stats_can package from StatsCan 
 from stats_can import StatsCan
 
@@ -604,88 +585,126 @@ df = sc.table_to_df("36-10-0222-01")
 df.head(5)
 ```
 
----
-# Dataframes
-
-- A Dataframe is a 2-dimensional data structure that can store different types of data, such as characters, integers, floats, factors, etc. It is similar to an Excel spreadsheet or an SQL table or the `data.frame` in R. 
-
-- As in Python lists, a dataframe always has an index that starts at 0. 
-
-- An index refers to the position of an element in the data structure.
 
 ---
-# Dataframes
+# Case Study
 
+Kim has been asked to use Python to analyze the following dataset. 
 
+&lt;img src="pics/casestudy.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+Specifically, her tasks are:
+- Create one or more Python "dictionaries" for all data in the above table (Hint: You can use nested dictionaries for fruits and quantity/rejected, and use lists to hold the values)
+- Print fruit dictionary
+- Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
+- Calculate and print the rejection rate
+- Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
+
+---
+  # Case Study - Suggested Solutions
+  
+  - Create fruit dictionary
 
 
 ```python
-supermarket.head(5)
+fruit = {'oranges': {'quantity': [3000, 6000, 12000],
+  'rejected': [1400, 3500, 6700]},
+  'bananas': {'quantity': [500, 3000, 15000],
+    'rejected': [700, 1750, 3350]}}
 ```
 
-```
-##     Invoice ID Branch       City  ... gross margin percentage gross income Rating
-## 0  750-67-8428      A     Yangon  ...                4.761905      26.1415    9.1
-## 1  226-31-3081      C  Naypyitaw  ...                4.761905       3.8200    9.6
-## 2  631-41-3108      A     Yangon  ...                4.761905      16.2155    7.4
-## 3  123-19-1176      A     Yangon  ...                4.761905      23.2880    8.4
-## 4  373-73-7910      A     Yangon  ...                4.761905      30.2085    5.3
-## 
-## [5 rows x 17 columns]
-```
-
----
-# Exploring our data
-
-- Here are a few useful functions to view dataframe objects in Python
+- Print fruit dictionary
 
 
 ```python
-# check type of thing `supermarket` object is
-type(supermarket)
-
-# what kind of things does `supermarket` contain? 
-supermarket.dtypes
-
-# access column names of `supermarket`
-supermarket.columns
-
-# access the shape/dimension of `supermarket`
-supermarket.shape
-
-# get first 15 obs of `supermarket`
-supermarket.head(15)
-
-# get last 15 obs of `supermarket`
-supermarket.tail(15)
+print(fruit)              
 ```
 
 ---
-# Calculating summary statistics
+  # Case Study - Suggested Solutions
+  
+  - Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
 
+
+```python
+print("Quantity = ", sum(fruit['oranges']['quantity']))
+```
+
+```
+## Quantity =  21000
+```
+
+```python
+print("Rejected = ", sum(fruit['oranges']['rejected']))
+```
+
+```
+## Rejected =  11600
+```
+
+---
+  # Case Study - Suggested Solutions
+  
+  - Calculate and print the rejection rate
+
+
+```python
+orange_totalqty = sum(fruit['oranges']['quantity'])
+orange_totalrej = sum(fruit['oranges']['rejected'])
+orange_rejrate = orange_totalrej / orange_totalqty
+
+# use round() to round to 2 decimal places only
+print("Orange rejection rate = ", round(orange_rejrate, 2))
+```
+
+```
+## Orange rejection rate =  0.55
+```
+
+---
+  # Case Study - Suggested Solutions
+  
+  - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
+
+
+```python
+fruit = {'oranges': {'quantity': [3000, 6000, 12000],
+  'rejected': [1400, 3500, 6700]},
+  'bananas': {'quantity': [500, 3000, 15000],
+    'rejected': [700, 1750, 3350]}}
+
+print("Orange max qty =", max(fruit['oranges']['quantity']))
+```
+
+```
+## Orange max qty = 12000
+```
 
 ---
 # Recap
 
-- Formulate simple function  ** only if not covered in Workshop 1
+- Created and accessed values in a dictionary
 
-- Load data into Colab from a variety of sources
+- Formulated a simple function  
 
-- Perform basic data cleaning and transformation steps
+- Installed and imported libraries into Colab
 
-- Leverage Python library functions
+- Loaded data into Colab from a number of sources
 
 ---
-# What's next?
+# Over the holidays
+
+- Review Python I and Python II notes - be ready for a quiz in 521D 🤓
+
+- Work through the "Working with Data" section (Exploring our Data and Calculating Summary Statistics) in the Workshop 4 codes
 
 - UBC MDS' [Programming in Python for Data Science](https://prog-learn.mds.ubc.ca/en/module0/)
+
 
 ---
 # References
 
 - [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/00-before-we-start/index.html) by Data Carpentry
-
-
 
 
 

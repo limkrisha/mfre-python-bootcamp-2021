@@ -65,12 +65,11 @@ pandas <- import("pandas")
 
 # Overview
 
-.gray[
-**Python I**
+.gray[**Python I**
 
   - Google Colab
   - Variable Types - String, Integer, Float, Boolean
-  - Lists ] 
+  - Lists] 
   - Dictionaries, Functions
 
 **Python II**
@@ -161,7 +160,7 @@ print(emissions)
 ---
 # Dictionaries
 
-Dictionaries can contain key:value pairs where the values are again dictionaries, just like lists can also contain lists. 
+Dictionaries can contain key:value pairs where the values are also dictionaries, just like lists can also contain lists. 
 
 In this example, the keys are still country names, but the values are GDP and carbon emissions.
 
@@ -204,7 +203,6 @@ data = {'canada': {'gdp': 44100, 'carbon': 15.3},
         'usa': {'gdp': 55700, 'carbon': 16.6}, 
         'china': {'gdp': 16200, 'carbon': 7.06}}
 
-print("Method 1")
 for key, value in data.items():
   print(key, "->", value)
 ```
@@ -218,7 +216,7 @@ for key, value in data.items():
 data = {'canada': {'gdp': 44100, 'carbon': 15.3}, 
         'usa': {'gdp': 55700, 'carbon': 16.6}, 
         'china': {'gdp': 16200, 'carbon': 7.06}}
-      
+  
 for key in data.keys():
   print(key, "->", data[key])
 ```
@@ -236,11 +234,9 @@ country = ["canada", "usa", "china", "japan"]
 gdp = [44100, 55700, 16200, 39300]
 carbon = [15.3, 16.6, 7.06, 9.14]
 
-# method 1
 dict_loop = {country[i]:carbon[i] for i in range(len(country))}
 print(dict_loop)
 
-# method 2
 dict_zip = dict(zip(country, carbon))
 print(dict_zip)
 ```
@@ -274,14 +270,14 @@ my_function("Janelle")
 ---
 # Functions - give it a try!
 
-1. How would you modify `my_function` so that it would print the inputted first and last names? 
+**How would you modify `my_function` so that it would print the inputted first and last names?**
 
 ```{python, eval = F}
 def my_function(fname):
   print("Hello " + fname + ". Welcome to class today!")
 ```
 
-2. Create a function called `add_function` that takes 2 numbers and returns their sum
+**Create a function called `add_function` that takes 2 numbers and returns their sum**
 
 
 ---
@@ -310,7 +306,7 @@ name: get_started
 
   - Importing libraries in Python
   - Importing files to Google Colab 
-  - Working with data and Python packages
+  - **Working with data and Python packages
 
 ---
 # About Packages
@@ -516,6 +512,7 @@ df = sc.table_to_df("36-10-0222-01")
 df.head(5)
 ```
 
+
 ---
 # Case Study
 
@@ -532,6 +529,62 @@ Specifically, her tasks are:
 - Calculate and print the rejection rate
 - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
 
+---
+  # Case Study - Suggested Solutions
+  
+  - Create fruit dictionary
+
+```{python}
+fruit = {'oranges': {'quantity': [3000, 6000, 12000],
+  'rejected': [1400, 3500, 6700]},
+  'bananas': {'quantity': [500, 3000, 15000],
+    'rejected': [700, 1750, 3350]}}
+
+```
+
+- Print fruit dictionary
+
+```{python, eval = F}
+print(fruit)              
+```
+
+---
+  # Case Study - Suggested Solutions
+  
+  - Print the sum of all "Orange" Total Quantity and sum of all "Orange" Quantity Rejected
+
+```{python}
+print("Quantity = ", sum(fruit['oranges']['quantity']))
+print("Rejected = ", sum(fruit['oranges']['rejected']))
+```
+
+---
+  # Case Study - Suggested Solutions
+  
+  - Calculate and print the rejection rate
+
+```{python}
+orange_totalqty = sum(fruit['oranges']['quantity'])
+orange_totalrej = sum(fruit['oranges']['rejected'])
+orange_rejrate = orange_totalrej / orange_totalqty
+
+# use round() to round to 2 decimal places only
+print("Orange rejection rate = ", round(orange_rejrate, 2))
+```
+
+---
+  # Case Study - Suggested Solutions
+  
+  - Calculate and print the maximum of "Orange" Total Quantity (Hint: use `max()` function)
+
+```{python}
+fruit = {'oranges': {'quantity': [3000, 6000, 12000],
+  'rejected': [1400, 3500, 6700]},
+  'bananas': {'quantity': [500, 3000, 15000],
+    'rejected': [700, 1750, 3350]}}
+
+print("Orange max qty =", max(fruit['oranges']['quantity']))
+```
 
 ---
 # Recap
@@ -547,9 +600,12 @@ Specifically, her tasks are:
 ---
 # Over the holidays
 
+- Review Python I and Python II notes - be ready for a quiz in 521D 🤓
+
+- Work through the "Working with Data" section (Exploring our Data and Calculating Summary Statistics) in the Workshop 4 codes
+
 - UBC MDS' [Programming in Python for Data Science](https://prog-learn.mds.ubc.ca/en/module0/)
 
-- Review Python I and Python II notes - be ready for a quiz in 521D 🤓
 
 ---
 # References
@@ -558,8 +614,8 @@ Specifically, her tasks are:
 
 
 ```{r convert, include = F}
-# library(xaringanBuilder)
+library(xaringanBuilder)
 # 
-# build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.html")
+build_pdf("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop4.html")
 # pagedown::chrome_print("C:/Users/krishlim/OneDrive - UBC/Desktop/mfre/2021w-python-bootcamp/presentation/workshop3.Rmd")
 ```
